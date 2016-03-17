@@ -1,5 +1,6 @@
 # angular-busy-button
-busy or interactive buttons for your app
+Interactive buttons for your app.
+Based on Luckasz's Watroba [v-buttons](https://github.com/LukaszWatroba/v-button) module.
 
 ### [Demo](http://www.codekraft.it/demos/angular-busy-button/)
 
@@ -14,5 +15,16 @@ Add module name to your application dependencies:
 angular.module('app', ['angular-busy-button']);
 ```
 And now you are ready to use the __busy-button__ attribute.
+
+### Building
+Install all the development dependencies.
+```bash
+npm install
+```
+There are two main actions:
+```bash
+grunt watch  // re-build automatically on javascript files changes 
+grunt build // create the distribution files by doing concat and uglify
+```
 
 Reference and examples coming soon.
