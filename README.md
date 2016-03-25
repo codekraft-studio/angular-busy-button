@@ -5,6 +5,10 @@ Based on Luckasz's Watroba [v-buttons](https://github.com/LukaszWatroba/v-button
 ### [Demo](http://www.codekraft.it/demos/angular-busy-button/)
 
 ### Getting started
+Download the package from github or from npm:
+```bash
+npm install angular-busy-button
+```
 Add the style and the script to your html page:
 ```html
 <link rel="stylesheet" type="text/css" href="angular-busy-button.css">
