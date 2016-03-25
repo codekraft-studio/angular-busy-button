@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Angular Button | codekraft-studio</title>
-    <link rel="stylesheet" href="src/angular-busy-button.css">
+    <link rel="stylesheet" href="dist/angular-busy-button.css">
     <link rel="stylesheet" href="style.css">
   </head>
   <body ng-controller="mainCtrl">
@@ -30,15 +30,16 @@
 
             <h4>Basic Usage</h4>
 
-            <input class="busy-btn" type="submit" ng-disabled="myForm.textInput.$valid" busy-button="doSomething" />
+            <input class="busy-btn" type="submit" busy-button />
 
-            <button class="busy-btn" type="button" busy-text="Please wait" busy-success="Thank you" busy-after="Click me again" busy-button>Click me</button>
+            <button class="busy-btn" type="button" busy-text="Please wait"
+              busy-success="Thank you" busy-after="Click me again" busy-button>Click me</button>
 
             <h4>Custom Class</h4>
 
             <button type="button" class="busy-btn dark"
-             busy-complete-class="evil-complete" busy-text="doing some stuff.."
-             busy-success="ok, done!" busy-button>custom button</button>
+              busy-complete-class="evil-complete" busy-text="doing some stuff.."
+              busy-success="ok, done!" busy-button>custom button</button>
 
           </div>
 
@@ -46,18 +47,17 @@
 
             <h4>With Promises</h4>
 
-            <button class="busy-btn async-button" busy-runtimes="1" busy-after="Check it out!" busy-button="getRepos">Get my other repos</button>
+            <button class="busy-btn async-button" busy-runtimes="1"
+              busy-after="Check it out!" busy-button="getRepos">Get my other repos</button>
 
-            <div>
-              <ul class="repo-response">
-                <a ng-repeat="repo in reposList" href="{{repo.html_url}}">
-                  <li class="repo-item">
-                    <span ng-bind="repo.name" class="repo-heading"></span>
-                    <span ng-bind="repo.description" class="repo-text"></span>
-                  </li>
-                </a>
-              </ul>
-            </div>
+            <ul class="repo-response">
+              <a ng-repeat="repo in reposList" href="{{repo.html_url}}">
+                <li class="repo-item">
+                  <span ng-bind="repo.name" class="repo-heading"></span>
+                  <span ng-bind="repo.description" class="repo-text"></span>
+                </li>
+              </a>
+            </ul>
 
           </div>
 
@@ -67,8 +67,9 @@
 
   </body>
   <script type="text/javascript" src="https://code.angularjs.org/1.2.0/angular.min.js"></script>
-  <script type="text/javascript" src="src/angular-busy-button.module.js"></script>
+  <script type="text/javascript" src="dist/angular-busy-button.min.js"></script>
   <script type="text/javascript">
+
     angular.module('app', ['angular-busy-button'])
 
     .controller('mainCtrl', function($scope, $timeout, $http, $q) {
@@ -86,22 +87,7 @@
         return deferred.promise;
       }
 
-      $scope.otherAction = function() {
-        $scope.otherModel = true;
-        $timeout(function() {
-          $scope.otherModel = false;
-        }, 2000)
-      }
-
-      $scope.doSomething = function() {
-        var deferred = $q.defer();
-        $timeout(function() {
-          $scope.textInput = '';
-          deferred.resolve();
-        }, 2000)
-        return deferred.promise;
-      }
-
     })
+
   </script>
 </html>

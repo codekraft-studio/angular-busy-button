@@ -1,4 +1,4 @@
-/* angular-busy-button - v1.0.0 by codekraft-studio - 2016-03-17 */
+/* angular-busy-button - v1.0.0 by codekraft-studio - 2016-03-25 */
 
 angular.module('angular-busy-button', [])
 
