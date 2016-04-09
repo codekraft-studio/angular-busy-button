@@ -50,7 +50,7 @@
             <button class="busy-btn async-button" busy-runtimes="1"
               busy-after="Check it out!" busy-button="getRepos">Get my other repos</button>
 
-            <ul class="repo-response">
+            <ul class="repo-response" ng-show="reposList.length">
               <a ng-repeat="repo in reposList" href="{{repo.html_url}}">
                 <li class="repo-item">
                   <span ng-bind="repo.name" class="repo-heading"></span>
@@ -66,11 +66,15 @@
     </article>
 
   </body>
-  <script type="text/javascript" src="https://code.angularjs.org/1.2.0/angular.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular-animate.min.js"></script>
   <script type="text/javascript" src="dist/angular-busy-button.min.js"></script>
   <script type="text/javascript">
 
-    angular.module('app', ['angular-busy-button'])
+    angular.module('app', [
+      'angular-busy-button',
+      'ngAnimate'
+    ])
 
     .controller('mainCtrl', function($scope, $timeout, $http, $q) {
 
