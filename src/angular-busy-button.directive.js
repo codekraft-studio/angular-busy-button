@@ -12,10 +12,6 @@
 
   return directive;
 
-  function changeText(elem, text) {
-    return elem[0].nodeName.toLowerCase() === 'input' ? elem.val(text) : elem.html(text);
-  }
-
   function _link(scope, elem, attrs) {
 
     // init counter
@@ -28,7 +24,7 @@
     // resolve function result (if passed one)
     var completeClassResult;
 
-    var defaultTimeout = 2000; // the timeout if nothing is specified
+    var defaultTimeout = 2000; // the default timeout if nothing is specified
     var defaultWaitTime = 1000; // the time to wait before use again the button
 
     // get the element original text content
@@ -58,21 +54,27 @@
     // how many times the button can run, default unlimited
     var busyRuntimes = attrs.busyRuntimes || -1;
 
+    function changeText(elem, text) {
+      return isInput ? elem.val(text) : elem.html(text);
+    }
+
     /**
      * If is passed a valid function to busy-button
-     * bind to click event on item, otherwise bind
-     * a fake call on click with timeout
+     * bind to click event on item
+     * otherwise bind a fake call on click with timeout
      */
     if( angular.isFunction(scope.busyButton) ) {
 
       // execute passed function on
       // element click event
       elem.bind('click', function(e) {
+
         scope.$apply(function() {
-          // set flag to loading
+
+          // set flag to true
           scope.busyFlag = true;
 
-          return $q.when( scope.busyButton(), function(response) {
+          return $q.when( scope.busyButton(), function() {
             // set success class
             busyCompleteText = busySuccess;
             completeClassResult = 'success';
@@ -81,8 +83,13 @@
             busyCompleteText = busyError;
             completeClassResult = 'error';
 
-          }).then(function() { scope.busyFlag = false; })
+          }).then(function() {
+            // reset the flag to false
+            scope.busyFlag = false;
+          })
+
         })
+
       })
 
     } else {
