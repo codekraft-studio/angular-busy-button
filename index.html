@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Angular Button | codekraft-studio</title>
-    <link rel="stylesheet" href="dist/angular-busy-button.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dist/angular-busy-button.css">
   </head>
   <body ng-controller="mainCtrl">
 
-    <article role="main" ng-controller="mainCtrl">
+    <article style="text-align: center" role="main" ng-controller="mainCtrl">
 
       <header>
         <div class="hcont">
@@ -30,16 +30,10 @@
 
             <h4>Basic Usage</h4>
 
-            <input class="busy-btn" type="submit" busy-button />
+            <input class="btn" type="submit" busy-button />
 
-            <button class="busy-btn" type="button" busy-text="Please wait"
+            <button class="btn" type="button" busy-text="Please wait"
               busy-success="Thank you" busy-after="Click me again" busy-button>Click me</button>
-
-            <h4>Custom Class</h4>
-
-            <button type="button" class="busy-btn dark"
-              busy-complete-class="evil-complete" busy-text="doing some stuff.."
-              busy-success="ok, done!" busy-button>custom button</button>
 
           </div>
 
@@ -47,16 +41,18 @@
 
             <h4>With Promises</h4>
 
-            <button class="busy-btn async-button" busy-runtimes="1"
+            <button class="btn async-button" busy-runtimes="1"
               busy-after="Check it out!" busy-button="getRepos">Get my other repos</button>
 
             <ul class="repo-response" ng-show="reposList.length">
-              <a ng-repeat="repo in reposList" href="{{repo.html_url}}">
-                <li class="repo-item">
-                  <span ng-bind="repo.name" class="repo-heading"></span>
-                  <span ng-bind="repo.description" class="repo-text"></span>
+
+                <li class="repo-item" ng-repeat="repo in reposList | limitTo: 4">
+                  <a href="{{repo.html_url}}">
+                    <span ng-bind="repo.name" class="repo-heading"></span>
+                    <span ng-bind="repo.description" class="repo-text"></span>
+                  </a>
                 </li>
-              </a>
+
             </ul>
 
           </div>
