@@ -1,4 +1,4 @@
-/* angular-busy-button - v1.0.0 by codekraft-studio - 2016-05-03 */
+/* angular-busy-button - v1.0.0 by codekraft-studio - 2016-05-04 */
 
 angular.module('angular-busy-button', [])
 
@@ -167,20 +167,9 @@ angular.module('angular-busy-button', [])
           // set the text to display after the action
           changeText(elem, busyAfter);
 
-          // check if can be executed again
-          if( busyRuntimes === -1 ) {
-
-            // re-enable button
-            return attrs.$set('disabled', false);
-
-          } else if( busyRuntimes > count ) {
-
-            // re-enable button
-            return attrs.$set('disabled', false);
-          }
-
-          // add disabled class
-          elem.addClass('btn-disabled');
+          // if button can be executed again enable it again
+          // otherwise add the disabled class
+          return busyRuntimes === -1 || busyRuntimes > count ? attrs.$set('disabled', false) : elem.addClass('btn-disabled');
 
         }, busyWaitTime)
 

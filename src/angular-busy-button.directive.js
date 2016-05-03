@@ -163,20 +163,9 @@
           // set the text to display after the action
           changeText(elem, busyAfter);
 
-          // check if can be executed again
-          if( busyRuntimes === -1 ) {
-
-            // re-enable button
-            return attrs.$set('disabled', false);
-
-          } else if( busyRuntimes > count ) {
-
-            // re-enable button
-            return attrs.$set('disabled', false);
-          }
-
-          // add disabled class
-          elem.addClass('btn-disabled');
+          // if button can be executed again enable it again
+          // otherwise add the disabled class
+          return busyRuntimes === -1 || busyRuntimes > count ? attrs.$set('disabled', false) : elem.addClass('btn-disabled');
 
         }, busyWaitTime)
 
