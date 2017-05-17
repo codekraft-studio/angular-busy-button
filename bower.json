@@ -1,0 +1,26 @@
+{
+  "name": "angular-busy-button",
+  "description": "interactive buttons for your application",
+  "main": [
+    "dist/angular-busy-button.js",
+    "dist/angular-busy-button.css"
+  ],
+  "authors": [
+    "codekraft-studio"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "angularjs",
+    "busy-buttons",
+    "interactive",
+    "button"
+  ],
+  "homepage": "https://github.com/codekraft-studio/angular-busy-button",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
