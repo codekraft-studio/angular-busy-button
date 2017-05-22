@@ -1,6 +1,6 @@
 {
   "name": "angular-busy-button",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "interactive buttons for your application",
   "main": "index.js",
   "scripts": {
