@@ -5,9 +5,10 @@ Based on Luckasz's Watroba [v-buttons](https://github.com/LukaszWatroba/v-button
 ### [Demo](http://www.codekraft.it/demos/angular-busy-button/)
 
 ### Getting started
-Download the package from github or from npm:
+Download the package:
 ```bash
-npm install angular-busy-button
+npm install --save angular-busy-button
+bower install --save angular-busy-button
 ```
 Add the style and the script to your html page:
 ```html
@@ -18,16 +19,16 @@ Add module name to your application dependencies:
 ```javascript
 angular.module('app', ['angular-busy-button']);
 ```
-And now you are ready to use the __busy-button__ attribute.
+And now you are ready to use the __busy-button__ attribute directive.
 
 ### Basic usage
 The simplest way to use it is by adding __busy-button__ like so:
 ```html
 <button type="button" busy-button>Click Me</button>
 ```
-The directive can take also a __function__ or a __promise__ like in this example:
+The directive can take also a __function__ that return a __Promise__, a __$resource__ or a __$http__ promise, like in this example:
 ```html
-<button type="button" busy-button="loadData">Click Me</button>
+<button type="button" busy-button="loadData()">Click Me</button>
 ```
 ```javascript
 $scope.loadData = function() {
@@ -47,6 +48,8 @@ Also you can use various attributes to customize the button beheviour:
 * __busy-wait-time__: The number of milliseconds to wait before click again - default 1000ms (1 sec)
 * __busy-runtimes__: The number of times which the button can be pressed/executed
 
+---
+
 ### Development
 Install all the development dependencies.
 ```bash
@@ -54,6 +57,18 @@ npm install
 ```
 There are two main actions:
 ```bash
+grunt  // start the development server with livereload enabled on changes
 grunt watch  // re-build automatically on javascript files changes
 grunt build // create the distribution files by doing concat and uglify
 ```
+
+---
+
+### Contributing
+
+1. Create an issue and describe your idea
+2. Fork the project (https://github.com/codekraft-studio/angular-busy-button/fork)
+3. Create your feature branch (`git checkout -b my-new-feature`)
+4. Commit your changes (`git commit -am 'Add some feature'`)
+5. Publish the branch (`git push origin my-new-feature`)
+6. Create a new Pull Request
