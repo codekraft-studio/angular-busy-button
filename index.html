@@ -52,12 +52,11 @@
 
             <h4>With Promises</h4>
 
-            <button class="btn async-button" busy-runtimes="1"
-              busy-after="Check it out!" busy-button="getRepos">Get my other repos</button>
+            <button class="btn async-button" busy-runtimes="1" busy-after="Check it out!" busy-button="getRepos()">Get my other repos</button>
 
             <ul class="repo-response" ng-show="reposList.length">
 
-                <li class="repo-item" ng-repeat="repo in reposList | limitTo: 4">
+                <li class="repo-item" ng-repeat="repo in reposList | limitTo: 5">
                   <a href="{{repo.html_url}}">
                     <span ng-bind="repo.name" class="repo-heading"></span>
                     <span ng-bind="repo.description" class="repo-text"></span>
@@ -67,15 +66,17 @@
             </ul>
 
           </div>
-
+        
+        </div>
+        
       </section>
 
     </article>
 
   </body>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular.min.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular-animate.min.js"></script>
-  <script type="text/javascript" src="dist/angular-busy-button.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
+  <script type="text/javascript" src="dist/angular-busy-button.js"></script>
   <script type="text/javascript">
 
     angular.module('app', [
@@ -89,12 +90,12 @@
       $scope.getRepos = function() {
         var deferred = $q.defer();
         $http.get("https://api.github.com/users/codekraft-studio/repos")
-        .success(function(response) {
-          $scope.reposList = response;
+        .then(function(response) {
+          $scope.reposList = response.data;
           deferred.resolve();
-        }).error(function() {
+        }, function() {
           deferred.reject();
-        })
+        });
         return deferred.promise;
       }
 
