@@ -7,7 +7,10 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: ['src/*.js'],
-        tasks: ['concat', 'uglify']
+        tasks: ['concat', 'uglify'],
+        options: {
+          livereload: true
+        }
       }
     },
 
@@ -34,6 +37,17 @@ module.exports = function(grunt) {
           'dist/<%= pkg.name %>.min.js': ['dist/<%= pkg.name %>.js']
         }
       }
+    },
+    
+    connect: {
+      server: {
+        options: {
+          port: 8080,
+          hostname: 'localhost',
+          open: true,
+          livereload: true
+        }
+      }
     }
 
   });
@@ -41,9 +55,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   // default task
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', ['connect', 'watch']);
 
   // build task (no watch)
   grunt.registerTask('build', ['concat', 'uglify']);
